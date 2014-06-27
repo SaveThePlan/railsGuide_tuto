@@ -1,5 +1,8 @@
 <h1>Articles#index</h1>
 
+<p><%= link_to 'home', controller: 'welcome', action: 'index' %></p>
+<p><%= link_to 'new', new_article_path %></p>
+
 <table>
 	<thead>
 		<tr>
@@ -12,7 +15,7 @@
 		<% @articles.each do |art| %>
 		<tr>
 			<td><%= art.id %></td>
-			<td><%= art.title %></td>
+			<td><%= link_to art.title, article_path(art) %></td>
 			<td><%= art.text %></td>
 		</tr>
 		<% end %>
