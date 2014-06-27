@@ -9,14 +9,17 @@
 			<th>ID</th>
 			<th>Titre</th>
 			<th>Texte</th>
+			<th colspan="2"></th>
 		</tr>
 	</thead>
 	<tbody>
 		<% @articles.each do |art| %>
 		<tr>
 			<td><%= art.id %></td>
-			<td><%= link_to art.title, article_path(art) %></td>
+			<td><%= art.title %></td>
 			<td><%= art.text %></td>
+			<td><%= link_to 'Show', article_path(art) %></td>
+			<td><%= link_to 'Edit', edit_article_path(art) %></td>
 		</tr>
 		<% end %>
 	</tbody>

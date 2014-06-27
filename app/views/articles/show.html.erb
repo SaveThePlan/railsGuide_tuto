@@ -3,4 +3,5 @@
 <h2><%= @article.title %></h2>
 <p><%= @article.text %></p>
 
+<p><%= link_to 'edit', edit_article_path(@article) %></p>
 <p><%= link_to 'retour', articles_path %></p>

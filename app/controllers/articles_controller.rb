@@ -37,6 +37,23 @@ class ArticlesController < ApplicationController
   end
   
   
+  def edit
+    @article = Article.find(params[:id]) #load existing article
+  rescue ActiveRecord::RecordNotFound
+    #cath error if article not found
+    redirect_to action: 'index'
+  end
+  
+  def update
+    @article = Article.find(params[:id])
+    
+    if @article.update(article_params) #passing here a hash with data to update, ie {title: 'toto'} only update title
+      redirect_to @article
+    else
+      render 'edit'
+    end
+  end
+  
 # PRIVATE ---------------------------------------------------
   
   private
