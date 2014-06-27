@@ -18,6 +18,7 @@ class ArticlesController < ApplicationController
  void method to display new article form 
 =end
   def new
+    @article = Article.new #load validation infos to check data form
   end
   
 =begin
@@ -27,8 +28,12 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     
-    @article.save
-    redirect_to @article
+    if @article.save
+      redirect_to @article
+    else
+      render 'new' #to reload 'new' form with current @article data
+    end
+      
   end
   
   
