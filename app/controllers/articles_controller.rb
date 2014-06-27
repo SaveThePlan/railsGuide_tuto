@@ -1,3 +1,11 @@
+# 
+#  articles_controller.rb
+#  railsGuide
+#  
+#  Created by Nanook on 2014-06-27.
+#  Copyright 2014 Nanook. All rights reserved.
+# 
+
 class ArticlesController < ApplicationController
 
 # articles_path  
@@ -67,4 +75,5 @@ class ArticlesController < ApplicationController
   def article_params
     params.require(:article).permit(:title,:text)
   end
+  
 end
