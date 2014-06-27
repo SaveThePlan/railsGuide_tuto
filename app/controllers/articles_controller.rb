@@ -1,22 +1,16 @@
 class ArticlesController < ApplicationController
-  
-=begin
- list all articles 
-=end  
+
+# articles_path  
   def index
     @articles = Article.all
   end
   
-=begin
- show a single article 
-=end
+# article_path(:article)
   def show
     @article = Article.find(params[:id])
   end
   
-=begin
- void method to display new article form 
-=end
+# new_article_path
   def new
     @article = Article.new #load validation infos to check data form
   end
@@ -36,14 +30,18 @@ class ArticlesController < ApplicationController
       
   end
   
-  
+# edit_article_path  
   def edit
     @article = Article.find(params[:id]) #load existing article
   rescue ActiveRecord::RecordNotFound
     #cath error if article not found
-    redirect_to action: 'index'
+    redirect_to articles_path
   end
   
+=begin
+ update an article
+ only with PATCH or PUT HTTP request 
+=end
   def update
     @article = Article.find(params[:id])
     
@@ -52,6 +50,14 @@ class ArticlesController < ApplicationController
     else
       render 'edit'
     end
+  end
+  
+# article_path(:article), method: :delete
+  def destroy
+    @article = Article.find(params[:id])
+    @article.destroy
+    
+    redirect_to articles_path
   end
   
 # PRIVATE ---------------------------------------------------

@@ -9,7 +9,7 @@
 			<th>ID</th>
 			<th>Titre</th>
 			<th>Texte</th>
-			<th colspan="2"></th>
+			<th colspan="3"></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -20,6 +20,8 @@
 			<td><%= art.text %></td>
 			<td><%= link_to 'Show', article_path(art) %></td>
 			<td><%= link_to 'Edit', edit_article_path(art) %></td>
+			<td><%= link_to 'Destroy', article_path(art), method: :delete, 
+					data: {confirm: 'Are you sure ?'} %></td>
 		</tr>
 		<% end %>
 	</tbody>
